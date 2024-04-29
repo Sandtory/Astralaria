@@ -1,14 +1,23 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from "react-native";
+import planets from "@/data/planets";
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import EditScreenInfo from "@/components/EditScreenInfo";
+import { Text } from "@/components/Themed";
+import { Link } from "expo-router";
+import { Spacer } from "@/components/atoms/Spacer";
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <Text style={styles.title}>Planet App</Text>
+      <Spacer />
+      <Text style={styles.title}>Choose a planet:</Text>
+      <Spacer />
+      {planets.map((planet) => (
+        <Link key={planet.name} href={`/planets/${planet.name}`}>
+          <Text>{planet.name}</Text>
+        </Link>
+      ))}
     </View>
   );
 }
@@ -16,16 +25,16 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   separator: {
     marginVertical: 30,
     height: 1,
-    width: '80%',
+    width: "80%",
   },
 });
