@@ -1,13 +1,14 @@
 import { StyleSheet, View } from "react-native";
 
-import EditScreenInfo from "@/components/EditScreenInfo";
-import { Text } from "@/components/Themed";
+import EditScreenInfo from "@/src/components/EditScreenInfo";
+import { Text } from "@/src/components/Themed";
 
 export default function SettingsScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Settings</Text>
       <View style={styles.separator} />
+      {/* A button to toggle between dark mode and light mode*/}
     </View>
   );
 }

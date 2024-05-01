@@ -1,23 +1,32 @@
 import { StyleSheet, View } from "react-native";
-import planets from "@/data/planets";
+import planets from "@/src/data/planets";
 
-import EditScreenInfo from "@/components/EditScreenInfo";
-import { Text } from "@/components/Themed";
+import { Text } from "@/src/components/Themed";
 import { Link } from "expo-router";
-import { Spacer } from "@/components/atoms/Spacer";
+import { Spacer } from "@/src/components/atoms/Spacer";
+import { Button } from "@/src/components/molecules/Button";
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Planet App</Text>
+      <Text style={styles.title}>Welcome to Astralaria!</Text>
       <Spacer />
       <Text style={styles.title}>Choose a planet:</Text>
       <Spacer />
       {planets.map((planet) => (
-        <Link key={planet.name} href={`/planets/${planet.name}`}>
+        <Link
+          className="py-1 "
+          key={planet.name}
+          href={`/planets/${planet.name}`}
+        >
           <Text>{planet.name}</Text>
         </Link>
       ))}
+      <Link href={"/Void"}>
+        <Text style={{ color: "darkred" }}>Void</Text>
+      </Link>
+      <Spacer />
+      <Button title="Test" onPress={() => console.log("hello")} />
     </View>
   );
 }

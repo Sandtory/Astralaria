@@ -1,11 +1,12 @@
-import { Link, useLocalSearchParams } from "expo-router";
+import { Link, router, useLocalSearchParams } from "expo-router";
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import planets from "@/data/planets";
+import { View, StyleSheet } from "react-native";
+import planets from "@/src/data/planets";
+import { Text } from "@/src/components/Themed";
+import { Button } from "@/src/components/molecules/Button";
+import { Spacer } from "@/src/components/atoms/Spacer";
 
-type PlanetPageProps = {};
-
-const PlanetPage = (props: PlanetPageProps) => {
+const PlanetPage = () => {
   const { name } = useLocalSearchParams<{ name: string }>();
   const planet = planets.find((planet) => planet.name === name);
 
@@ -22,17 +23,21 @@ const PlanetPage = (props: PlanetPageProps) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>This is - {name}</Text>
+      <Text className="text-2xl font-semibold py-1">This is - {name}</Text>
       {planet.moons.length > 0 ? (
         <>
           <Text>The name of this planet's moons are:</Text>
           {planet.moons.map((moon) => (
-            <Text key={moon}>{moon}</Text>
+            <Text className="py-1" key={moon}>
+              {moon}
+            </Text>
           ))}
         </>
       ) : (
         <Text>This planet doesn't have any moons.</Text>
       )}
+      <Spacer size="small" />
+      <Button title="Go Back" onPress={() => router.push("/(tabs)")}></Button>
     </View>
   );
 };

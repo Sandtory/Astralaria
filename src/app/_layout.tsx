@@ -9,7 +9,8 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
-import { useColorScheme } from "@/components/useColorScheme";
+import { useColorScheme } from "@/src/components/useColorScheme";
+import "../global.css";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -58,7 +59,10 @@ function RootLayoutNav() {
           name="LandingPage"
           options={{ headerTitle: "Landing", headerShown: false }}
         />
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="(tabs)"
+          options={{ headerShown: false, headerTitle: "Universe" }}
+        />
         <Stack.Screen name="Modal" options={{ presentation: "modal" }} />
       </Stack>
     </ThemeProvider>

@@ -6,14 +6,14 @@ import {
   View,
 } from "react-native";
 
-import { Text } from "@/components/Themed";
+import { Text } from "@/src/components/Themed";
 import { router } from "expo-router";
-import { Spacer } from "@/components/atoms/Spacer";
+import { Spacer } from "@/src/components/atoms/Spacer";
 
 export default function LandingPage() {
   return (
     <ImageBackground
-      source={require("@/assets/images/neuron.jpg")}
+      source={require("@/src/assets/images/neuron.jpg")}
       style={[styles.container, { width: "100%", height: "auto" }]}
       resizeMode="cover"
     >
